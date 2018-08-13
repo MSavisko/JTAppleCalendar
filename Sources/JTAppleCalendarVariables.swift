@@ -26,6 +26,7 @@
 extension JTAppleCalendarView {
     /// Workaround for Xcode bug that prevents you from connecting the delegate in the storyboard.
     /// Remove this extra property once Xcode gets fixed.
+    /*
     @IBOutlet public var ibCalendarDelegate: AnyObject? {
         get { return calendarDelegate }
         set { calendarDelegate = newValue as? JTAppleCalendarViewDelegate }
@@ -37,6 +38,7 @@ extension JTAppleCalendarView {
         get { return calendarDataSource }
         set { calendarDataSource = newValue as? JTAppleCalendarViewDataSource }
     }
+    */
     
     @available(*, unavailable)
     /// Will not be used by subclasses

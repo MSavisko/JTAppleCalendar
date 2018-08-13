@@ -201,3 +201,13 @@ extension JTAppleCalendarView: UICollectionViewDelegate, UICollectionViewDataSou
         return false
     }
 }
+
+extension NSNotification.Name {
+    public static let JTAppleCalendarShouldSelectDate: NSNotification.Name = {
+        return NSNotification.Name(rawValue: "JTAppleCalendar.ShouldSelectDate")
+    }()
+    
+    public static let JTAppleCalendarShouldDeselectDate: NSNotification.Name = {
+        return NSNotification.Name(rawValue: "JTAppleCalendar.ShouldDeselectDate")
+    }()
+}
