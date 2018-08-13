@@ -92,6 +92,7 @@ extension JTAppleCalendarView: UICollectionViewDelegate, UICollectionViewDataSou
     /// Asks the delegate if the specified item should be selected.
     /// true if the item should be selected or false if it should not.
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        NSLog("JTCalendarView, collectionView shouldSelectItemAt indexPath: \(indexPath)")
         return handleShouldSelectionValueChange(collectionView, action: .shouldSelect, indexPath: indexPath, selectionType: .userInitiated)
     }
     
@@ -107,6 +108,7 @@ extension JTAppleCalendarView: UICollectionViewDelegate, UICollectionViewDataSou
     /// It does not call this method when you programmatically
     /// set the selection.
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        NSLog("JTCalendarView, collectionView didSelectItemAt indexPath: \(indexPath)")
         handleSelectionValueChanged(collectionView, action: .didSelect, indexPath: indexPath, selectionType: .userInitiated)
     }
     
@@ -184,18 +186,26 @@ extension JTAppleCalendarView: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func handleShouldSelectionValueChange(_ collectionView: UICollectionView, action: ShouldSelectionAction, indexPath: IndexPath, selectionType: SelectionType) -> Bool {
+        NSLog("JTCalendarView, handleShouldSelectionValueChange, index: \(indexPath), action: \(action), selectType: \(selectionType)")
+        NSLog("JTCalendarView, handleShouldSelectionValueChange, calendarDelegate: \(String(describing: calendarDelegate))")
+        let infoOfDate = dateOwnerInfoFromPath(indexPath)
+        NSLog("JTCalendarView, handleShouldSelectionValueChange, infoDate: \(String(describing: infoOfDate))")
+        
         if let
             delegate = calendarDelegate,
-            let infoOfDate = dateOwnerInfoFromPath(indexPath) {
+            infoOfDate != nil {
+            
             let cell = collectionView.cellForItem(at: indexPath) as? JTAppleCell
             let cellState = cellStateFromIndexPath(indexPath,
-                                                   withDateInfo: infoOfDate,
+                                                   withDateInfo: infoOfDate!,
                                                    selectionType: selectionType)
             switch action {
             case .shouldSelect:
-                return delegate.calendar(self, shouldSelectDate: infoOfDate.date, cell: cell, cellState: cellState)
+                NSLog("JTCalendarView, handleShouldSelectionValueChange, shouldSelectDate:")
+                return delegate.calendar(self, shouldSelectDate: infoOfDate!.date, cell: cell, cellState: cellState)
             case .shouldDeselect:
-                return delegate.calendar(self, shouldDeselectDate: infoOfDate.date, cell: cell, cellState: cellState)
+                NSLog("JTCalendarView, handleShouldSelectionValueChange, shouldDeselectDate:")
+                return delegate.calendar(self, shouldDeselectDate: infoOfDate!.date, cell: cell, cellState: cellState)
             }
         }
         return false

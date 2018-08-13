@@ -40,6 +40,7 @@ extension JTAppleCalendarView {
     }
     */
     
+    /*
     @available(*, unavailable)
     /// Will not be used by subclasses
     open override var delegate: UICollectionViewDelegate? {
@@ -53,6 +54,7 @@ extension JTAppleCalendarView {
         get { return super.dataSource }
         set {/* Do nothing */ }
     }
+    */
     
     /// Returns all selected dates
     open var selectedDates: [Date] {
