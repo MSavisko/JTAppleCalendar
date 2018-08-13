@@ -23,6 +23,7 @@
 //
 
 /// Default delegate functions
+/*
 public extension JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool { return true }
     func calendar(_ calendar: JTAppleCalendarView, shouldDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool { return true }
@@ -38,6 +39,7 @@ public extension JTAppleCalendarViewDelegate {
     func sizeOfDecorationView(indexPath: IndexPath) -> CGRect { return .zero }
     func scrollDidEndDecelerating(for calendar: JTAppleCalendarView) {}
 }
+*/
 
 /// The JTAppleCalendarViewDataSource protocol is adopted by an
 /// object that mediates the application’s data model for a
