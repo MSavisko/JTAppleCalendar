@@ -187,6 +187,19 @@ open class JTAppleCalendarView: UICollectionView {
             #endif
         }
     }
+    
+    public func updateDelegate() {
+        super.delegate = self
+        super.dataSource = self
+    }
+    
+    public func currentCollectionViewDelegate() -> UICollectionViewDelegate? {
+        return super.delegate
+    }
+    
+    public func currentCollectionViewDataSource() -> UICollectionViewDataSource? {
+        return super.dataSource
+    }
 }
 
 @available(iOS 9.0, *)
