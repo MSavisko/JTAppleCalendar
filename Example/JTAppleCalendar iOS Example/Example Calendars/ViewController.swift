@@ -190,7 +190,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         calendarView.register(UINib(nibName: "PinkSectionHeaderView", bundle: Bundle.main),
-                              forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                              forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                               withReuseIdentifier: "PinkSectionHeaderView")
         
         
