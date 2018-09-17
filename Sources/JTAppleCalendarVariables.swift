@@ -24,6 +24,7 @@
 
 // Calculated Variables
 extension JTAppleCalendarView {
+    
     /// Workaround for Xcode bug that prevents you from connecting the delegate in the storyboard.
     /// Remove this extra property once Xcode gets fixed.
     @IBOutlet public var ibCalendarDelegate: AnyObject? {
@@ -38,6 +39,11 @@ extension JTAppleCalendarView {
         set { calendarDataSource = newValue as? JTAppleCalendarViewDataSource }
     }
     
+    //override var delegate
+    //override var dataSource
+    //override dataSource and delegate - bad idea, because than we have problem of invoking delegate in release version of build
+    //If you will find solution to fix it, fill free to uncomment it
+    /*
     @available(*, unavailable)
     /// Will not be used by subclasses
     open override var delegate: UICollectionViewDelegate? {
@@ -51,6 +57,7 @@ extension JTAppleCalendarView {
         get { return super.dataSource }
         set {/* Do nothing */ }
     }
+    */
     
     /// Returns all selected dates
     open var selectedDates: [Date] {
